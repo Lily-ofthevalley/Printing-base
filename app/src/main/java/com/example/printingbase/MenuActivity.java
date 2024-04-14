@@ -12,13 +12,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -28,8 +28,16 @@ public class MainActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(getResources().getColor(R.color.status_bar_color));
     }
-    public void sendToMenu(View v){
-        Intent i = new Intent(this, MenuActivity.class);
+    public void sendToPlastic(View v){
+        Intent i = new Intent(this, PlasticActivity.class);
+        startActivity(i);
+    }
+    public void sendToProjects(View v){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+    public void sendToFinishedProjects(View v){
+        Intent i = new Intent(this, FinishedProdjectActivity.class);
         startActivity(i);
     }
 }
