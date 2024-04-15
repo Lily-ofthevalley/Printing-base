@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Printing base</string>
+    <string name="project_name">Project name</string>
+    <string name="grams_of_filament">Grams of filament</string>
+    <string name="print_time">Print time</string>
+    <string name="add_project">Add project</string>
 </resources>
