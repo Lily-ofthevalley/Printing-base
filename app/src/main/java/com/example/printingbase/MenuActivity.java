@@ -29,15 +29,15 @@ public class MenuActivity extends AppCompatActivity {
         window.setStatusBarColor(getResources().getColor(R.color.status_bar_color));
     }
     public void sendToPlastic(View v){
-        Intent i = new Intent(this, PlasticActivity.class);
+        Intent i = new Intent(this, FilamentActivity.class);
         startActivity(i);
     }
     public void sendToProjects(View v){
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, ProjectActivity.class);
         startActivity(i);
     }
     public void sendToFinishedProjects(View v){
-        Intent i = new Intent(this, FinishedProdjectActivity.class);
+        Intent i = new Intent(this, FinishedProjectActivity.class);
         startActivity(i);
     }
 }

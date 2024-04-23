@@ -1,34 +1,36 @@
 package com.example.printingbase;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
-public class PlasticActivity extends AppCompatActivity {
+public class FilamentActivity extends AppCompatActivity {
 
     //references to buttons and other controls on the layout
     Button btn_addFilament, btn_addProjectFinal;
     EditText et_filamentName, et_filamentAmountNeeded, et_filamentType, et_filamentColor, et_filamentAmount;
-    RecyclerView rv_filaments;
+    ListView lv_filaments;
     DataBaseHelper dataBaseHelper;
+    ArrayAdapter filamentArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_plastic);
+        setContentView(R.layout.activity_filament);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,8 +44,10 @@ public class PlasticActivity extends AppCompatActivity {
         et_filamentType = findViewById(R.id.et_filamentType);
         et_filamentColor = findViewById(R.id.et_filamentColor);
         et_filamentAmount = findViewById(R.id.et_filamentAmount);
-        rv_filaments = findViewById(R.id.rv_filaments);
-        dataBaseHelper = new DataBaseHelper(PlasticActivity.this);
+        lv_filaments = findViewById(R.id.lv_filament);
+        dataBaseHelper = new DataBaseHelper(FilamentActivity.this);
+
+        showFilamentsOnList(dataBaseHelper);
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -59,11 +63,19 @@ public class PlasticActivity extends AppCompatActivity {
     }
 
     private void viewAddFilament(){
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.add_filament);
+        showFilamentsOnList(dataBaseHelper);
+        Intent i = new Intent(this, AddFilamentActivity.class);
+        startActivity(i);
+    }
 
-        dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_window);
+    public void sendToMenu(View v) {
+        Intent i = new Intent(this, MenuActivity.class);
+        startActivity(i);
+    }
 
-        dialog.show();
+    public void showFilamentsOnList(DataBaseHelper dataBaseHelper){
+        filamentArrayAdapter = new ArrayAdapter<FilamentModel>(FilamentActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getFilaments());
+        lv_filaments.setAdapter(filamentArrayAdapter);
+        Toast.makeText(FilamentActivity.this, "success", Toast.LENGTH_SHORT).show();
     }
 }

@@ -4,4 +4,7 @@
     <string name="grams_of_filament">Grams of filament</string>
     <string name="print_time">Print time</string>
     <string name="add_project">Add project</string>
+    <string name="filament_name">Filament name</string>
+    <string name="add_projectbleh">Add project</string>
+    <string name="print_time_in_minutes">Print time in minutes</string>
 </resources>

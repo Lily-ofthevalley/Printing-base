@@ -3,37 +3,31 @@ package com.example.printingbase;
 public class ProjectModel {
 
     private int id;
-
     private String projectName;
-
     private  String filament;
-
     private int printTime;
-
     private boolean isPrinting;
-
     private boolean isFinished;
+    private int filamentNeeded;
 
     //constructor
-    public ProjectModel(int id, String projectName, String filament, int printTime, boolean isPrinting, boolean isFinished){
+    public ProjectModel(int id, String projectName, String filament, int printTime, int filamentNeeded){
         this.id = id;
         this.projectName = projectName;
         this.filament = filament;
         this.printTime = printTime;
+        this.filamentNeeded = filamentNeeded;
         this.isPrinting = isPrinting;
         this.isFinished = isFinished;
     }
 
+    //This turns the arrayList items into strings
     @Override
     public String toString(){
-        return "ProjectModel{" +
-                "id=" + id +
-                ", projectName='" + projectName + '\'' +
-                ", filament=" + filament +
-                ", printTime=" + printTime +
-                ", isPrinting=" + isPrinting +
-                ", isFinished=" + isFinished +
-                '}';
+        return "Project name = " + projectName + "\n" +
+                "Print time in minutes = " + printTime + "\n" +
+                "Filament used = " + filament + "\n" +
+                "Amount of filament needed = " + filamentNeeded + " grams";
     }
 
     //thingy
@@ -88,5 +82,13 @@ public class ProjectModel {
 
     public void setFinished(boolean finished) {
         isFinished = finished;
+    }
+
+    public int getFilamentNeeded() {
+        return filamentNeeded;
+    }
+
+    public void setFilamentNeeded(int filamentNeeded) {
+        this.filamentNeeded = filamentNeeded;
     }
 }

@@ -13,16 +13,21 @@
         android:theme="@style/Theme.PrintingBase"
         tools:targetApi="31">
         <activity
-            android:name=".FinishedProdjectActivity"
+            android:name=".AddProjectActivity"
             android:exported="false" />
         <activity
-            android:name=".PlasticActivity"
+            android:name=".FinishedProjectActivity"
+            android:exported="false" />
+        <activity android:name=".AddFilamentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FilamentActivity"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ProjectActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
