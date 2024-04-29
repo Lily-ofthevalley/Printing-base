@@ -22,14 +22,11 @@ public class FilamentModel {
     //toString is necessary for printing the contents of a class object
     @Override
     public String toString() {
-        return "FilamentModel{" +
-                "id=" + id +
-                ", filamentName='" + filamentName + '\'' +
-                ", filamentBrand='" + filamentBrand + '\'' +
-                ", filamentType='" + filamentType + '\'' +
-                ", color='" + color + '\'' +
-                ", filamentAmount=" + filamentAmount +
-                '}';
+        return  "Filament name= " + filamentName + '\n' +
+                "Filament brand= " + filamentBrand + '\n' +
+                "Filament type= " + filamentType + '\n' +
+                "Color= " + color + '\n' +
+                "Filament amount left= " + filamentAmount + " grams";
     }
 
     //thingy

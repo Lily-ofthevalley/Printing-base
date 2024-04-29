@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,6 +43,22 @@ public class FinishedProjectActivity extends AppCompatActivity {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(getResources().getColor(R.color.status_bar_color));
+
+        lv_finishedProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ProjectModel selectedProject = (ProjectModel) parent.getItemAtPosition(position);
+                Intent i = new Intent(FinishedProjectActivity.this, DetailedFinishedProjectActivity.class);
+
+                int itemId = 0;
+                if (selectedProject != null) {
+                    itemId = selectedProject.getId();
+                }
+
+                i.putExtra("selectedFinishedProject", itemId);
+                startActivity(i);
+            }
+        });
     }
 
     public void showFinishedProjectsOnList(DataBaseHelper dataBaseHelper){

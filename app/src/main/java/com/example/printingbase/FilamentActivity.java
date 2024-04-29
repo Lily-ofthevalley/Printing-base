@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ public class FilamentActivity extends AppCompatActivity {
     //references to buttons and other controls on the layout
     Button btn_addFilament, btn_addProjectFinal;
     EditText et_filamentName, et_filamentAmountNeeded, et_filamentType, et_filamentColor, et_filamentAmount;
-    ListView lv_filaments;
+    ListView lv_filament;
     DataBaseHelper dataBaseHelper;
     ArrayAdapter filamentArrayAdapter;
 
@@ -44,7 +45,7 @@ public class FilamentActivity extends AppCompatActivity {
         et_filamentType = findViewById(R.id.et_filamentType);
         et_filamentColor = findViewById(R.id.et_filamentColor);
         et_filamentAmount = findViewById(R.id.et_filamentAmount);
-        lv_filaments = findViewById(R.id.lv_filament);
+        lv_filament = findViewById(R.id.lv_filament);
         dataBaseHelper = new DataBaseHelper(FilamentActivity.this);
 
         showFilamentsOnList(dataBaseHelper);
@@ -58,6 +59,23 @@ public class FilamentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewAddFilament();
+            }
+        });
+
+        lv_filament.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FilamentModel selectedFilament = (FilamentModel) parent.getItemAtPosition(position);
+                Intent i = new Intent(FilamentActivity.this, DetailedFilamentActivity.class);
+
+                int itemId = 0;
+                if(selectedFilament != null) {
+                    itemId = selectedFilament.getId();
+                }
+
+                i.putExtra("selectedFilament", itemId);
+
+                startActivity(i);
             }
         });
     }
@@ -75,7 +93,7 @@ public class FilamentActivity extends AppCompatActivity {
 
     public void showFilamentsOnList(DataBaseHelper dataBaseHelper){
         filamentArrayAdapter = new ArrayAdapter<FilamentModel>(FilamentActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getFilaments());
-        lv_filaments.setAdapter(filamentArrayAdapter);
+        lv_filament.setAdapter(filamentArrayAdapter);
         Toast.makeText(FilamentActivity.this, "success", Toast.LENGTH_SHORT).show();
     }
 }

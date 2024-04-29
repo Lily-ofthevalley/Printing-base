@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailedProjectActivity">
+
+    <include
+        android:id="@+id/include5"
+        layout="@layout/toolbar_detailed_projects"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_projectTitleDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/title"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include5" />
+
+    <TextView
+        android:id="@+id/tv_printTimeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/time_to_print"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_projectTitleDetail" />
+
+    <TextView
+        android:id="@+id/tv_filamentNeededDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/filament_needed"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_printTimeDetail" />
+
+    <TextView
+        android:id="@+id/tv_filamendNameDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/filament_used"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filamentNeededDetail" />
+
+    <TextView
+        android:id="@+id/tv_projectPrintingDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/project_is_printing"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filamendNameDetail" />
+
+    <TextView
+        android:id="@+id/tv_timeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/time"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_printTimeDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_projectTitleDetail" />
+
+    <TextView
+        android:id="@+id/tv_amountDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/amount"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_filamentNeededDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_timeDetail" />
+
+    <TextView
+        android:id="@+id/tv_usedDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_filamendNameDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_amountDetail" />
+
+    <TextView
+        android:id="@+id/tv_printingDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/hmm"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_projectPrintingDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_usedDetail" />
+
+    <Button
+        android:id="@+id/btn_deleteProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/dark_grey"
+        android:onClick="deleteProject"
+        android:text="@string/delete_project"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_startProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_grey"
+        android:onClick="startProject"
+        android:text="@string/start_project"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_deleteProject"
+        app:layout_constraintEnd_toStartOf="@id/btn_finishProject"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_finishProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_grey"
+        android:onClick="finishProject"
+        android:text="@string/finish_project"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_deleteProject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_startProject" />
+
+    <TextView
+        android:id="@+id/tv_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Minutes"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_timeDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_projectTitleDetail" />
+
+    <TextView
+        android:id="@+id/tv_grams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Grams"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_amountDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_minutes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

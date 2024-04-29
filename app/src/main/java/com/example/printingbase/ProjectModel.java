@@ -1,5 +1,7 @@
 package com.example.printingbase;
 
+import android.graphics.Bitmap;
+
 public class ProjectModel {
 
     private int id;
@@ -9,6 +11,7 @@ public class ProjectModel {
     private boolean isPrinting;
     private boolean isFinished;
     private int filamentNeeded;
+    private Bitmap projectImage;
 
     //constructor
     public ProjectModel(int id, String projectName, String filament, int printTime, int filamentNeeded){
@@ -19,6 +22,17 @@ public class ProjectModel {
         this.filamentNeeded = filamentNeeded;
         this.isPrinting = isPrinting;
         this.isFinished = isFinished;
+    }
+
+    public ProjectModel(int id, String projectName, String filament, int printTime, int filamentNeeded, Bitmap projectImage){
+        this.id = id;
+        this.projectName = projectName;
+        this.filament = filament;
+        this.printTime = printTime;
+        this.filamentNeeded = filamentNeeded;
+        this.isPrinting = isPrinting;
+        this.isFinished = isFinished;
+        this.projectImage = projectImage;
     }
 
     //This turns the arrayList items into strings
@@ -90,5 +104,13 @@ public class ProjectModel {
 
     public void setFilamentNeeded(int filamentNeeded) {
         this.filamentNeeded = filamentNeeded;
+    }
+
+    public Bitmap getProjectImage() {
+        return projectImage;
+    }
+
+    public void setProjectImage(Bitmap projectImage) {
+        this.projectImage = projectImage;
     }
 }

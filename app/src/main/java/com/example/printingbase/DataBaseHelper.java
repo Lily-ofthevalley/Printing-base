@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,6 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String PRINT_TIME = "PRINT_TIME";
     public static final String IS_PRINTING = "IS_PRINTING";
     public static final String IS_FINISHED = "IS_FINISHED";
+    public  static final String PROJECT_IMAGE = "PROJECT_IMAGE";
     public static final String PROJECT_ID = "PROJECT_ID";
     public static final String FILAMENT_TABLE = "FILAMENT_TABLE";
     public static final String FILAMENT_ID = "FILAMENT_ID";
@@ -31,13 +34,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String FILAMENT_NEEDED = "FILAMENT_NEEDED";
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "3dprint,db", null, 1);
+        super(context, "3dprint,db", null, 2);
     }
 
     //this is called the first time a database is accessed. There should be code in here to create a new database.
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createProjectTableStatement = "CREATE TABLE " + PROJECT_TABLE + " (" + PROJECT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PROJECT_NAME + " TEXT, " + FILAMENT + " TEXT, " + PRINT_TIME + " INTEGER, " + IS_PRINTING + " BOOL, " + IS_FINISHED + " BOOL, " + FILAMENT_NEEDED + " INTEGER)";
+        String createProjectTableStatement = "CREATE TABLE " + PROJECT_TABLE + " (" + PROJECT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PROJECT_NAME + " TEXT, " + FILAMENT + " TEXT, " + PRINT_TIME + " INTEGER, " + IS_PRINTING + " BOOL, " + IS_FINISHED + " BOOL, " + FILAMENT_NEEDED + " INTEGER, " + PROJECT_IMAGE + " BLOB)";
         String createFilamentTableStatement = "CREATE TABLE " + FILAMENT_TABLE + " (" + FILAMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FILAMENT_NAME + " TEXT, " + FILAMENT_BRAND + " TEXT, " + FILAMENT_TYPE + " TEXT, " + COLOR + " TEXT, " + FILAMENT_AMOUNT + " INTEGER)";
 
         db.execSQL(createProjectTableStatement);
@@ -47,7 +50,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //this is called if the database version number changes. It prevents previous users apps from breaking when you change the database design.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + PROJECT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FILAMENT_TABLE);
+        onCreate(db);
     }
 
     //these are the functions to edit and show the database in the app
@@ -60,6 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(FILAMENT, projectModel.getFilament());
         cv.put(PRINT_TIME, projectModel.getPrintTime());
         cv.put(FILAMENT_NEEDED, projectModel.getFilamentNeeded());
+        cv.put(IS_FINISHED, 0);
 
         long insert = db.insert(PROJECT_TABLE, null, cv);
         if (insert == -1) {
@@ -89,9 +95,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //This is the arraylist
     public List<ProjectModel> getProjects() {
-        List<ProjectModel> returnList = new ArrayList<>();
+        List<com.example.printingbase.ProjectModel> returnList = new ArrayList<>();
         //get data from database
-        String queryString = "SELECT * FROM " + PROJECT_TABLE;
+        String queryString = "SELECT * FROM " + PROJECT_TABLE + " WHERE " + IS_FINISHED + " = 0 ";
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
@@ -105,7 +112,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int FilamentNeeded = cursor.getInt(6);
 
                 // Create a new ProjectModel object and add it to the return list
-                ProjectModel projectModel = new ProjectModel(id, Name, Filament, Time, FilamentNeeded);
+                com.example.printingbase.ProjectModel projectModel = new com.example.printingbase.ProjectModel(id, Name, Filament, Time, FilamentNeeded);
                 returnList.add(projectModel);
             } while (cursor.moveToNext()); // Use moveToNext() instead of moveToFirst() to iterate through all rows
 
@@ -161,9 +168,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String projectFilament = cursor.getString(2);
             int projectTime = cursor.getInt(3);
             int projectFilamentNeeded = cursor.getInt(6);
+            byte[] projectImageData = cursor.getBlob(7);
 
             // Create a new ProjectModel object and add it to the return list
-            ProjectModel projectModel = new ProjectModel(id, projectName, projectFilament, projectTime, projectFilamentNeeded);
+            ProjectModel projectModel;
+            if (projectImageData != null) {
+                Bitmap imageBitmap = BitmapFactory.decodeByteArray(projectImageData, 0, projectImageData.length);
+                projectModel = new ProjectModel(id, projectName, projectFilament, projectTime, projectFilamentNeeded, imageBitmap);
+            } else {
+                // If no image data is available, you can pass null or a placeholder image Bitmap
+                projectModel = new ProjectModel(id, projectName, projectFilament, projectTime, projectFilamentNeeded, null);
+            }
             returnList.add(projectModel);
         }
 

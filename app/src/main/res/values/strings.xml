@@ -7,4 +7,17 @@
     <string name="filament_name">Filament name</string>
     <string name="add_projectbleh">Add project</string>
     <string name="print_time_in_minutes">Print time in minutes</string>
+    <string name="title">Title</string>
+    <string name="time_to_print">Time to print:</string>
+    <string name="filament_needed">Filament needed:</string>
+    <string name="filament_used">Filament used:</string>
+    <string name="project_is_printing">Project is printing?:</string>
+    <string name="project_is_finished">Project is Finished?:</string>
+    <string name="time">Time</string>
+    <string name="amount">Amount</string>
+    <string name="name">Name</string>
+    <string name="hmm">Hmm?</string>
+    <string name="delete_project">Delete project</string>
+    <string name="start_project">Start project</string>
+    <string name="finish_project">Finish project</string>
 </resources>

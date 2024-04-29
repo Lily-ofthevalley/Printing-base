@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.io.Serializable;
 
 public class ProjectActivity extends AppCompatActivity {
 
@@ -52,6 +55,24 @@ public class ProjectActivity extends AppCompatActivity {
                 viewAddProject();
             }
         });
+
+        lv_projects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ProjectModel selectedProject = (ProjectModel) parent.getItemAtPosition(position);
+                Intent i = new Intent(ProjectActivity.this, DetailedProjectActivity.class);
+
+                int itemId = 0;
+                if(selectedProject != null) {
+                    itemId = selectedProject.getId();
+                }
+
+                i.putExtra("selectedProject", itemId);
+
+                startActivity(i);
+            }
+        });
+
     }
 
     public void sendToMenu(View v) {
@@ -68,6 +89,5 @@ public class ProjectActivity extends AppCompatActivity {
     public void showProjectsOnList(DataBaseHelper dataBaseHelper){
         projectArrayAdapter = new ArrayAdapter<ProjectModel>(ProjectActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getProjects());
         lv_projects.setAdapter(projectArrayAdapter);
-        Toast.makeText(ProjectActivity.this, "success", Toast.LENGTH_SHORT).show();
     }
 }
