@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="@string/grams_of_filament"
+            android:hint="@string/print_time_in_minutes"
             android:inputType="number" />
 
         <EditText
@@ -58,17 +58,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="@string/print_time_in_minutes"
+            android:hint="@string/grams_of_filament"
             android:inputType="number" />
 
         <Button
             android:id="@+id/btn_addProjectFinal"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/dark_grey"
-            android:text="@string/add_project"
-            android:textColor="@color/white" />
+            android:text="@string/add_project" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

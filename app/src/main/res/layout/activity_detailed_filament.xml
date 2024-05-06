@@ -18,6 +18,7 @@
 
     <TextView
         android:id="@+id/tv_detailFilamentName"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -29,6 +30,7 @@
 
     <TextView
         android:id="@+id/tv_detailBrand"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -40,6 +42,7 @@
 
     <TextView
         android:id="@+id/tv_detailType"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -51,6 +54,7 @@
 
     <TextView
         android:id="@+id/Color"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -62,6 +66,7 @@
 
     <TextView
         android:id="@+id/tv_detailAmount"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -73,6 +78,7 @@
 
     <TextView
         android:id="@+id/tv_brand"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -84,6 +90,7 @@
 
     <TextView
         android:id="@+id/tv_type"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -95,6 +102,7 @@
 
     <TextView
         android:id="@+id/tv_color"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -106,6 +114,7 @@
 
     <TextView
         android:id="@+id/tv_filLeft"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -117,6 +126,7 @@
 
     <TextView
         android:id="@+id/tv_grams2"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -128,13 +138,12 @@
 
     <Button
         android:id="@+id/btn_deleteFilament"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/dark_grey"
         android:onClick="deleteFilament"
         android:text="Delete filament"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

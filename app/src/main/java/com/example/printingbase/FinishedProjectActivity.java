@@ -1,13 +1,16 @@
 package com.example.printingbase;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -62,7 +65,19 @@ public class FinishedProjectActivity extends AppCompatActivity {
     }
 
     public void showFinishedProjectsOnList(DataBaseHelper dataBaseHelper){
-        finishedProjectArrayAdapter = new ArrayAdapter<ProjectModel>(FinishedProjectActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getFinishedProjects());
+        finishedProjectArrayAdapter = new ArrayAdapter<ProjectModel>(FinishedProjectActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getFinishedProjects()) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setTextColor(Color.rgb(247, 238, 221));
+                view.setPadding(10, 10, 0, 15);
+                view.setBackgroundColor(Color.rgb(91, 181, 199));
+
+                return view;
+            }
+        };
         lv_finishedProjects.setAdapter(finishedProjectArrayAdapter);
         Toast.makeText(FinishedProjectActivity.this, "success", Toast.LENGTH_SHORT).show();
     }

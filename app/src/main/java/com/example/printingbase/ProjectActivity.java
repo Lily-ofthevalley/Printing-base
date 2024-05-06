@@ -1,14 +1,17 @@
 package com.example.printingbase;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -87,7 +90,19 @@ public class ProjectActivity extends AppCompatActivity {
     }
 
     public void showProjectsOnList(DataBaseHelper dataBaseHelper){
-        projectArrayAdapter = new ArrayAdapter<ProjectModel>(ProjectActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getProjects());
+        projectArrayAdapter = new ArrayAdapter<ProjectModel>(ProjectActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getProjects()) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setTextColor(Color.rgb(247, 238, 221));
+                view.setPadding(10, 10, 0, 15);
+                view.setBackgroundColor(Color.rgb(91, 181, 199));
+
+                return view;
+            }
+        };
         lv_projects.setAdapter(projectArrayAdapter);
     }
 }

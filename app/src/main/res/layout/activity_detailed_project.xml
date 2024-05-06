@@ -18,6 +18,7 @@
 
     <TextView
         android:id="@+id/tv_projectTitleDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -30,6 +31,7 @@
 
     <TextView
         android:id="@+id/tv_printTimeDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -41,6 +43,7 @@
 
     <TextView
         android:id="@+id/tv_filamentNeededDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -52,6 +55,7 @@
 
     <TextView
         android:id="@+id/tv_filamendNameDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -63,6 +67,7 @@
 
     <TextView
         android:id="@+id/tv_projectPrintingDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -74,6 +79,7 @@
 
     <TextView
         android:id="@+id/tv_timeDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -85,6 +91,7 @@
 
     <TextView
         android:id="@+id/tv_amountDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,6 +103,7 @@
 
     <TextView
         android:id="@+id/tv_usedDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -107,6 +115,7 @@
 
     <TextView
         android:id="@+id/tv_printingDetail"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -118,45 +127,43 @@
 
     <Button
         android:id="@+id/btn_deleteProject"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/dark_grey"
         android:onClick="deleteProject"
         android:text="@string/delete_project"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_startProject"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/dark_grey"
         android:onClick="startProject"
         android:text="@string/start_project"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_deleteProject"
         app:layout_constraintEnd_toStartOf="@id/btn_finishProject"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_finishProject"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/dark_grey"
         android:onClick="finishProject"
         android:text="@string/finish_project"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_deleteProject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_startProject" />
 
     <TextView
         android:id="@+id/tv_minutes"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -168,6 +175,7 @@
 
     <TextView
         android:id="@+id/tv_grams"
+        style="@style/DetailTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

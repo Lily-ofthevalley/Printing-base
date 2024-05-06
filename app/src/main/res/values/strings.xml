@@ -20,4 +20,5 @@
     <string name="delete_project">Delete project</string>
     <string name="start_project">Start project</string>
     <string name="finish_project">Finish project</string>
+    <string name="projects">Projects</string>
 </resources>

@@ -3,5 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_grey">#AAA</color>
-    <color name="status_bar_color">#AAA</color>
+    <color name="status_bar_color">#008DDA</color>
+    <color name="Blue_ish">#5bb5c7</color>
 </resources>

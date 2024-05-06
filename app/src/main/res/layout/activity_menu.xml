@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F7EEDD"
     tools:context=".MenuActivity">
 
     <include
@@ -18,40 +18,36 @@
 
     <Button
         android:id="@+id/projectBtn"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@android:color/darker_gray"
         android:onClick="sendToProjects"
-        android:text="Projects"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:text="@string/projects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <Button
         android:id="@+id/plasticBtn"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@android:color/darker_gray"
         android:onClick="sendToPlastic"
         android:text="Filaments"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/projectBtn" />
 
     <Button
         android:id="@+id/finishedBtn"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@android:color/darker_gray"
         android:onClick="sendToFinishedProjects"
         android:text="Finished projects"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plasticBtn" />
