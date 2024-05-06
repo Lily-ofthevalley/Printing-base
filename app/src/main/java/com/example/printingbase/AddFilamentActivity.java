@@ -60,7 +60,7 @@ public class AddFilamentActivity extends AppCompatActivity {
                             et_filamentColor.getText().toString(),
                             Integer.parseInt(et_filamentAmount.getText().toString()));
                 } catch (Exception e) {
-                    Toast.makeText(AddFilamentActivity.this, "Error creating customer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddFilamentActivity.this, "Error creating filament", Toast.LENGTH_SHORT).show();
                     filamentModel = new FilamentModel(-1,
                             "error",
                             "error",
@@ -74,7 +74,7 @@ public class AddFilamentActivity extends AppCompatActivity {
 
                     boolean success = dataBaseHelper.addOneFilament(filamentModel);
 
-                    Toast.makeText(AddFilamentActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(AddFilamentActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(AddFilamentActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }

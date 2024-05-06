@@ -19,7 +19,6 @@ public class FilamentModel {
         this.filamentAmount = filamentAmount;
     }
 
-    //toString is necessary for printing the contents of a class object
     @Override
     public String toString() {
         return  "Filament name= " + filamentName + '\n' +

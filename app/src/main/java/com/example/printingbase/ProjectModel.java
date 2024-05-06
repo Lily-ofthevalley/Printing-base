@@ -35,7 +35,6 @@ public class ProjectModel {
         this.projectImage = projectImage;
     }
 
-    //This turns the arrayList items into strings
     @Override
     public String toString(){
         return "Project name = " + projectName + "\n" +

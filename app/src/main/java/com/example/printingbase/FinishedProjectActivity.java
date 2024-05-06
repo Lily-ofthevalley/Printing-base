@@ -79,7 +79,7 @@ public class FinishedProjectActivity extends AppCompatActivity {
             }
         };
         lv_finishedProjects.setAdapter(finishedProjectArrayAdapter);
-        Toast.makeText(FinishedProjectActivity.this, "success", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(FinishedProjectActivity.this, "success", Toast.LENGTH_SHORT).show();
     }
 
     public void sendToMenu(View v) {

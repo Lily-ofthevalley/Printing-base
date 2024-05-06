@@ -58,7 +58,7 @@ public class AddProjectActivity extends AppCompatActivity {
                             et_filaments.getText().toString(),
                             Integer.parseInt(et_filamentAmountNeeded.getText().toString()),
                             Integer.parseInt(et_printTime.getText().toString()));
-                    Toast.makeText(AddProjectActivity.this, "ja", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(AddProjectActivity.this, "ja", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(AddProjectActivity.this, "Error creating customer", Toast.LENGTH_SHORT).show();
                     projectModel = new ProjectModel(-1, "error", "error", 0, 0);

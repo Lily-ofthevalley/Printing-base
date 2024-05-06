@@ -109,6 +109,6 @@ public class FilamentActivity extends AppCompatActivity {
             }
         };
         lv_filament.setAdapter(filamentArrayAdapter);
-        Toast.makeText(FilamentActivity.this, "success", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(FilamentActivity.this, "success", Toast.LENGTH_SHORT).show();
     }
 }

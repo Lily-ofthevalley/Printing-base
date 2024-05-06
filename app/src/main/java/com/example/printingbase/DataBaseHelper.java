@@ -46,8 +46,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(createProjectTableStatement);
         db.execSQL(createFilamentTableStatement);
     }
-
-    //this is called if the database version number changes. It prevents previous users apps from breaking when you change the database design.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + PROJECT_TABLE);
@@ -96,14 +94,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     //This is the arraylist
     public List<ProjectModel> getProjects() {
         List<com.example.printingbase.ProjectModel> returnList = new ArrayList<>();
-        //get data from database
         String queryString = "SELECT * FROM " + PROJECT_TABLE + " WHERE " + IS_FINISHED + " = 0 ";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()) {
-            //loop through the cursor (result set) and create new project objects. Put them into the return list.
             do {
                 int id = cursor.getInt(0);
                 String Name = cursor.getString(1);
@@ -111,14 +107,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int Time = cursor.getInt(3);
                 int FilamentNeeded = cursor.getInt(6);
 
-                // Create a new ProjectModel object and add it to the return list
                 com.example.printingbase.ProjectModel projectModel = new com.example.printingbase.ProjectModel(id, Name, Filament, Time, FilamentNeeded);
                 returnList.add(projectModel);
-            } while (cursor.moveToNext()); // Use moveToNext() instead of moveToFirst() to iterate through all rows
+            } while (cursor.moveToNext());
 
         }
 
-        //close both the cursor and db.
         cursor.close();
         db.close();
         return returnList;
@@ -126,13 +120,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public List<FilamentModel> getFilaments() {
         List<FilamentModel> returnList = new ArrayList<>();
-        //get data from database
         String queryString = "SELECT * FROM " + FILAMENT_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()) {
-            //loop through the cursor (result set) and create new project objects. Put them into the return list.
             do {
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
@@ -141,15 +133,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String color = cursor.getString(4);
                 int amount = cursor.getInt(5);
 
-                // Create a new ProjectModel object and add it to the return list
                 FilamentModel filamentModel = new FilamentModel(id, name, brand, type, color, amount);
                 returnList.add(filamentModel);
-            } while (cursor.moveToNext()); // Use moveToNext() instead of moveToFirst() to iterate through all rows
+            } while (cursor.moveToNext());
 
         }
-        // No need for an else block here
 
-        //close both the cursor and db.
         cursor.close();
         db.close();
         return returnList;
@@ -157,7 +146,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public List<ProjectModel> getFinishedProjects() {
         List<ProjectModel> returnList = new ArrayList<>();
-        //get data from database
         String queryString = "SELECT * FROM " + PROJECT_TABLE + " WHERE " + IS_FINISHED + " = 1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
@@ -170,19 +158,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             int projectFilamentNeeded = cursor.getInt(6);
             byte[] projectImageData = cursor.getBlob(7);
 
-            // Create a new ProjectModel object and add it to the return list
             ProjectModel projectModel;
             if (projectImageData != null) {
                 Bitmap imageBitmap = BitmapFactory.decodeByteArray(projectImageData, 0, projectImageData.length);
                 projectModel = new ProjectModel(id, projectName, projectFilament, projectTime, projectFilamentNeeded, imageBitmap);
             } else {
-                // If no image data is available, you can pass null or a placeholder image Bitmap
                 projectModel = new ProjectModel(id, projectName, projectFilament, projectTime, projectFilamentNeeded, null);
             }
             returnList.add(projectModel);
         }
 
-        //close both the cursor and db.
         cursor.close();
         db.close();
         return returnList;
